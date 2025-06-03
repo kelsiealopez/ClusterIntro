@@ -15,7 +15,6 @@ A practical command-line cheat sheet for navigation, file manipulation, and usef
 - [Miscellaneous Useful Commands](#miscellaneous-useful-commands)
 - [Directories of Interest](#directories-of-interest)
 - [Executing Scripts](#executing-scripts)
-- [Special Bioinformatics Commands](#special-bioinformatics-commands)
 
 ---
 
@@ -38,25 +37,25 @@ cd ~
 
 ```bash
 # Display file contents
-cat 'file_name'
+cat file.txt
 
 # Create a new blank file
-touch 'file_name'
+touch file.txt
 
 # Open or edit a file (Nano editor)
-nano 'file_name'
+nano file.txt
 
 # Print the first 10 lines of a file
-head 'file_name'
+head file.txt
 
 # Print the first 20 lines of a file
-head -n 20 'file_name'
+head -n 20 file.txt
 
-# Print the last few lines of a file
-tail 'file_name'
+# Print the last 10 lines of a file
+tail file.txt
 
 # Delete a file
-rm 'file_name'
+rm file.txt
 ```
 
 
@@ -64,56 +63,56 @@ rm 'file_name'
 
 ```bash
 # Copy a file to another directory (absolute path)
-cp '/full/path/to/file.txt' '/full/path/to/different/directory'
+cp /full/path/to/file.txt /full/path/to/different/directory
 
 # Copy from current directory to another directory
-cp 'file.txt' '/full/path/to/different/directory'
+cp file.txt /full/path/to/different/directory
 
 # Copy to a subdirectory
-cp 'file.txt' 'directory/'
+cp file.txt directory/
 
 # Copy all contents of one directory into another (recursive)
-cp -R '/full/path/to/directory1/' '/full/path/to/directory2/'
+cp -R /full/path/to/directory1/ /full/path/to/directory2/
 
 # Rename (move) a file
-mv 'old_name' 'new_name'
+mv old_name.txt new_name.txt
 ```
 
 ## Compressing and Uncompressing Files
 
 ```bash
 # Compress a FASTA file
-gzip 'file.fasta'
+gzip file.fasta
 
 # Output: file.fasta.gz
 
 # Uncompress a FASTA file
-gunzip 'file.fasta.gz'
+gunzip file.fasta.gz
 ```
 
 
 ## Viewing File Contents
 ```bash
 # View (but not edit) a file
-less 'file_name'
+less file.txt
 
 # Count the number of lines in a file
-wc -l 'file_name'
+wc -l file.txt
 ```
 
 ## Miscellaneous Useful Commands
 ```bash
 # Run a command in the background
-command &
+[command] &
 
 # Make a new directory
-mkdir 'directory_name'
+mkdir directory_name
 
 # Set a variable to a file path
 variable="/long/path/to/file.txt"
 
 # Copy a file using a variable
-cp ${variable} 'different_directory'
+cp ${variable} /path/to/different_directory
 ```
 
 ## Executing Scripts
