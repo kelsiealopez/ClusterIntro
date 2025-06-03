@@ -1,6 +1,5 @@
 # Unix/Linux Command Reference
 
-A practical command-line cheat sheet for navigation, file manipulation, and useful shortcuts.
 
 ---
 
