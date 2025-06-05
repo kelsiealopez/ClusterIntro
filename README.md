@@ -19,7 +19,6 @@
 
 ## Navigating Directories
 ```bash
-Copy code
 cd /full/path/to/directory         # Change directory (absolute path)
 cd directory                       # Change to a subdirectory (relative path)
 cd ../                             # Move up one directory
