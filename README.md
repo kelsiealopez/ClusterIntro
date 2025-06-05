@@ -27,7 +27,6 @@ cd ~                               # Go to the home directory
 ```
 ## Working with Files
 ```bash
-Copy code
 cat file.txt                       # Display file contents
 touch file.txt                     # Create a new blank file
 nano file.txt                      # Open or edit a file (Nano editor)
@@ -38,7 +37,6 @@ rm file.txt                        # Delete a file
 ```
 ## Copying and Moving Files
 ```bash
-Copy code
 cp /full/path/to/file.txt /full/path/to/different/directory         # Copy a file
 cp file.txt directory/                                             # Copy to a subdirectory
 cp -R /full/path/to/directory1/ /full/path/to/directory2/          # Copy directories recursively
@@ -46,20 +44,17 @@ mv old_name.txt new_name.txt                                       # Rename or m
 ```
 ## Compressing and Uncompressing Files
 ```bash
-Copy code
 gzip file.fasta                   # Compress a FASTA file
 gunzip file.fasta.gz              # Uncompress a FASTA file
 ```
 ## Viewing File Contents
 ```bash
-Copy code
 less file.txt                     # View (but not edit) a file
 wc -l file.txt                    # Count the number of lines in a file
 ```
 
 ## Miscellaneous Useful Commands
 ```bash
-Copy code
 [command] &                       # Run a command in the background
 mkdir directory_name              # Make a new directory
 variable="/long/path/to/file.txt" # Set a variable to a file path
@@ -67,13 +62,11 @@ cp ${variable} /path/to/dir/      # Copy a file using a variable
 ```
 ## Executing Scripts
 ```bash
-Copy code
 chmod +x script_name.sh           # Make the script executable
 ./script_name.sh                  # Run executable script in the current directory
 ```
 ## Cluster Login and File Transfers
 ```bash
-Copy code
 ssh your_username@login.cluster.address.edu                       # Log onto the cluster
 scp file.txt your_username@login.cluster.address.edu:/cluster/dir # Upload file to cluster
 scp your_username@login.cluster.address.edu:/cluster/dir/file.txt . # Download file from cluster
@@ -82,7 +75,6 @@ scp your_username@login.cluster.address.edu:/cluster/dir/file.txt . # Download f
 # Sample SLURM job script (save as myjob.sbatch):
 
 ```bash
-Copy code
 #!/bin/bash
 #SBATCH --job-name=example
 #SBATCH --time=01:00:00
@@ -95,7 +87,6 @@ python your_script.py
 ## Submitting and managing jobs:
 
 ```bash
-Copy code
 sbatch myjob.sbatch                  # Submit a job
 squeue -u your_username              # See your jobs in the queue
 scancel JOBID                        # Cancel a job by its ID
@@ -104,7 +95,6 @@ scancel JOBID                        # Cancel a job by its ID
 # Example: Downloading a genome from NCBI using datasets CLI:
 
 ```bash
-Copy code
 datasets download genome accession GCA_013396695.1 --include gff3,gtf,rna,cds,protein,genome,seq-report
 unzip ncbi_dataset.zip
 ```
@@ -117,7 +107,6 @@ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_013/396/695/GCA_013396695.1_name
 ```
 ## Python/Conda Environment Setup
 ```bash
-Copy code
 module load anaconda3                             # Load anaconda/conda if required by the cluster
 conda create -n myenv python=3.10                 # Create a new environment
 conda activate myenv                              # Activate your environment
@@ -128,7 +117,6 @@ conda deactivate                                  # Deactivate the environment
 ## Project Organization Tips
 #Make a new directory for each project or analysis:
 ```bash
-# Copy code
 mkdir project_name
 cd project_name
 #Use clear and consistent file naming.
