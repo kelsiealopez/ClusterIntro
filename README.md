@@ -14,7 +14,6 @@
 - [Executing Scripts](#executing-scripts)
 - [Job Submission (SLURM Example)](#job-submission-slurm-example)
 - [Submitting and managing jobs:](#submitting-and-managing-jobs)
-- [Downloading and Handling Genomic Files](#downloading-and-handling-genomic-files)
 - [Python/Conda Environment Setup](#pythonconda-environment-setup)
 - [Using grep and awk for searching and processing text](#using-grep-and-awk-for-searching-and-processing-text)
 - [Project Organization Tips](#project-organization-tips)
@@ -119,19 +118,6 @@ sbatch 250204_Tha_Dol_RepeatModeler.sh & # submit job to slurm and have it run i
 sbatch 250204_Tha_Dol_RepeatModeler.sh                  # Submit a job
 squeue -u kelsielopez              # See your jobs in the queue
 scancel %JOBID                        # Cancel a job by its ID
-```
-## Downloading and Handling Genomic Files
-# Example: Downloading a genome from NCBI using datasets CLI:
-
-```bash
-datasets download genome accession GCA_013396695.1 --include gff3,gtf,rna,cds,protein,genome,seq-report
-unzip ncbi_dataset.zip
-```
-
-##Or using wget:
-
-```bash
-wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_013/396/695/GCA_013396695.1_name/xxx.fna.gz
 ```
 ## Python/Conda Environment Setup
 ```bash
