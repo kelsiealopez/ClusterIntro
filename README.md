@@ -29,7 +29,8 @@ cd ../                             # Move up one directory
 cd ../../                          # Move up two directories
 cd ~                               # Go to the home directory
 cd                                 # Also go to the home directory 
-mkdir directory_name				# make a new directory 
+mkdir directory_name				# make a new directory
+pwd             # print current directory
 ```
 ## Working with Files
 ```bash
