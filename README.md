@@ -74,9 +74,7 @@ chmod +x script_name.sh           # Make the script executable
 ```
 ## Cluster Login and File Transfers
 ```bash
-ssh your_username@login.cluster.address.edu                       # Log onto the cluster
-scp file.txt your_username@login.cluster.address.edu:/cluster/dir # Upload file to cluster
-scp your_username@login.cluster.address.edu:/cluster/dir/file.txt . # Download file from cluster
+ssh ssh kelsielopez@login.rc.fas.harvard.edu                       # Log onto the cluster
 ```
 ## Job Submission (SLURM Example)
 # Sample SLURM job script (save as myjob.sbatch):
@@ -109,7 +107,6 @@ unzip ncbi_dataset.zip
 ##Or using wget:
 
 ```bash
-Copy code
 wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_013/396/695/GCA_013396695.1_name/xxx.fna.gz
 ```
 ## Python/Conda Environment Setup
