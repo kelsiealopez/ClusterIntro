@@ -26,7 +26,9 @@
 cd /full/path/to/directory         # Change directory (absolute path)
 cd directory                       # Change to a subdirectory (relative path)
 cd ../                             # Move up one directory
+cd ../../                          # Move up two directories
 cd ~                               # Go to the home directory
+cd                                 # Also go to the home directory 
 ```
 ## Working with Files
 ```bash
@@ -53,6 +55,8 @@ gunzip file.fasta.gz              # Uncompress a FASTA file
 ## Viewing File Contents
 ```bash
 less file.txt                     # View (but not edit) a file
+zless file.txt.gz                 # View a gzipped file
+nano file.txt                     # View and edit a file
 wc -l file.txt                    # Count the number of lines in a file
 ```
 
