@@ -8,12 +8,16 @@
 - [Navigating Directories](#navigating-directories)
 - [Working with Files](#working-with-files)
 - [Copying and Moving Files](#copying-and-moving-files)
-- [Shortcuts and Tips](#shortcuts-and-tips)
 - [Compressing and Uncompressing Files](#compressing-and-uncompressing-files)
 - [Viewing File Contents](#viewing-file-contents)
 - [Miscellaneous Useful Commands](#miscellaneous-useful-commands)
-- [Directories of Interest](#directories-of-interest)
 - [Executing Scripts](#executing-scripts)
+- [Cluster Login and File Transfers](#cluster-login-and-file-transfers)
+- [Job Submission (SLURM Example)](#job-submission-slurm-example)
+- [Downloading and Handling Genomic Files](#downloading-and-handling-genomic-files)
+- [Python/Conda Environment Setup](#pythonconda-environment-setup)
+- [Project Organization Tips](#project-organization-tips)
+- [Mini-Exercises](#mini-exercises)
 
 ---
 
