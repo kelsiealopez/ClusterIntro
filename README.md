@@ -130,6 +130,7 @@ seff %JOBID                        # check the efficiency of a job that has comp
 ```bash
 
 # this is how you can submit only one script, to do things on many samples in parallel using this one batch script. it submits 4 jobs to the partition. one for each sample
+# this is also known as an array 
 # make a new file called samples.txt
 
 nano samples.txt
