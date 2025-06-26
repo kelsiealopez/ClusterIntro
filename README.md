@@ -14,6 +14,7 @@
 - [Executing Scripts](#executing-scripts)
 - [Job Submission (SLURM Example)](#job-submission-slurm-example)
 - [Submitting and managing jobs:](#submitting-and-managing-jobs)
+- [Submitting Batch Jobs:](#Submitting-Batch-Jobs)
 - [Python/Conda Environment Setup](#pythonconda-environment-setup)
 - [Using grep and awk for searching and processing text](#using-grep-and-awk-for-searching-and-processing-text)
 - [Project Organization Tips](#project-organization-tips)
@@ -121,6 +122,55 @@ squeue -u kelsielopez              # See your jobs in the queue
 scancel %JOBID                        # Cancel a job by its ID
 seff %JOBID                        # check the efficiency of a job that has completed 
 ```
+
+
+## Submitting Batch Jobs
+
+```bash
+
+# this is how you can submit only one script, to do things on many samples in parallel using this one batch script. it submits 4 jobs to the partition. one for each sample
+# make a new file called samples.txt
+
+nano samples.txt
+
+# it is just four lines with my samples names. no extra spaces or lines. then save it
+HMRG_6388
+HMRG_6386
+HMRG_6431
+HMRG_6433
+
+# make new file called Dipcall.sh
+nano Dipcall.sh
+
+#!/bin/bash
+#SBATCH -p edwards,shared,test # submits to whichever partition opens first. Make sure to set the time and cpu to whatever is the maximum for the least powerful one (test limit is 12 hrs so even though shared and edwards goes longer, i set it to 12) 
+#SBATCH -c 12
+#SBATCH -t 0-02:00
+#SBATCH -o Dipcall_%A_%a.out
+#SBATCH -e Dipcall_%A_%a.err 
+#SBATCH --mem=100000
+#SBATCH --mail-type=END
+#SBATCH --array=1-4 # this ssubmits 4 batch jobs. one for each sample name in sample.txt. 1 = HMRG_6388 , 2 = HMRG_6386 , 3 = HMRG_6431, 4 = HMRG_6433
+
+# Load sample name from the nth line of samples.txt.
+SAMPLE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" samples.txt)
+
+genome_indir="/n/netscratch/edwards_lab/Lab/kelsielopez/hap_assemblies/prefixed" # directory of my assemblies
+ref_name="/n/netscratch/edwards_lab/Lab/kelsielopez/hap_assemblies/prefixed/hemMar_complete_sorted_JBAT.FINAL.full.soft.mask" # directory with my reference genome assembly
+
+echo "Processing sample: $SAMPLE"
+
+run-dipcall $SAMPLE ${ref_name}.fasta \
+    ${genome_indir}/${SAMPLE}.hap1.p_ctg.fa \
+    ${genome_indir}/${SAMPLE}.hap2.p_ctg.fa > ${SAMPLE}.mak
+
+make -j2 -f ${SAMPLE}.mak
+gunzip ${SAMPLE}.pair.vcf.gz
+dipcall-aux.js vcfpair -s ${SAMPLE} ${SAMPLE}.pair.vcf > ${SAMPLE}.fixed.vcf
+
+
+```
+
 ## Python/Conda Environment Setup
 ```bash
 module load python/3.10.9-fasrc01                            # Load python from fasrc
