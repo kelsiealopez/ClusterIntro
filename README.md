@@ -243,31 +243,33 @@ grep "gene" genes.gff | awk '{print $9}'
 
 ## Example job script that uses variables and a loop. 
 
-nano trim_galore_WGS_test_hemMar.sh
+nano HTseq_second_round_outgroup.sh
 
 #!/bin/bash
-#SBATCH -p edwards,shared # I submitted to two partitions, so whichever one is ready first it gets submitted to. 
-#SBATCH -c 16
-#SBATCH -t 2-12:00
-#SBATCH -o trim_galore_RNA_outgroup_%j.out
-#SBATCH -e trim_galore_RNA_outgroup_%j.err 
-#SBATCH --mem=150000 # requet 150 Gb of memory
+#SBATCH -p shared
+#SBATCH -c 2
+#SBATCH -t 3-00:00
+#SBATCH -o HTseq_second_round_outgroup_%j.out
+#SBATCH -e HTseq_second_round_outgroup_%j.err 
+#SBATCH --mem=100000
 #SBATCH --mail-type=END
 
+module load python/3.10.9-fasrc01
+source activate python_env1
 
-output_directory="/n/netscratch/edwards_lab/Lab/kelsielopez/cactus-snakemake/WGS/trimmed"
-input_directory="/n/netscratch/edwards_lab/Lab/kelsielopez/cactus-snakemake/WGS"
+input_directory="/n/netscratch/edwards_lab/Lab/kelsielopez/Thamnophilus/outgroup/second_round/star"
+filenames="/n/netscratch/edwards_lab/Lab/kelsielopez/Thamnophilus/outgroup/batch_Nov2024/filenames_no_extension.txt"
+genome_dir_gtf="/n/netscratch/edwards_lab/Lab/kelsielopez/Thamnophilus/ncbi_dataset/data/GCA_013396695.1/Sakesphorus_luctuosus.gtf"
+output_directory="/n/netscratch/edwards_lab/Lab/kelsielopez/Thamnophilus/outgroup/second_round/htseq"
 
 
-trim_galore \
---paired \
--j 1 --retain_unpaired \
---phred33 \
---output_dir \
-${output_directory} \
---length 35 -q 0 \
---stringency 5 \
-${input_directory}/${LINE}_R1_001.fastq.gz ${input_directory}/${LINE}_R2_001.fastq.gz
+cat ${filenames} |
+while read LINE;
+do 
+htseq-count -m intersection-strict --stranded=reverse ${input_directory}/${LINE}_Aligned.out.sam \
+${genome_dir_gtf} \
+-i gene_id --additional-attr=gene_name > ${output_directory}/${LINE}_counts
+done;
 
 
 ```
