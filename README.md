@@ -119,6 +119,7 @@ sbatch 250204_Tha_Dol_RepeatModeler.sh & # submit job to slurm and have it run i
 ```bash
 sbatch 250204_Tha_Dol_RepeatModeler.sh                  # Submit a job
 squeue -u kelsielopez              # See your jobs in the queue
+showq -u kelsielopez               # also
 scancel %JOBID                        # Cancel a job by its ID
 seff %JOBID                        # check the efficiency of a job that has completed 
 ```
